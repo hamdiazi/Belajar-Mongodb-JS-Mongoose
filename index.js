@@ -124,11 +124,11 @@ const Movie = mongoose.model('Movie', movieSchema);
 //     console.log(err);
 // });
 
-findByIdAndDelete
-Movie.findByIdAndDelete('68ef133c51a993cb14bdef2f')
-.then((result) => {
-    console.log(result);
-}).catch((err) => {
-    console.log(err);
-});
+// findByIdAndDelete
+// Movie.findByIdAndDelete('68ef133c51a993cb14bdef2f')
+// .then((result) => {
+//     console.log(result);
+// }).catch((err) => {
+//     console.log(err);
+// });
 
