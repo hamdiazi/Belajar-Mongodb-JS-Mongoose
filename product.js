@@ -13,8 +13,36 @@ const productSchema = mongoose.Schema ( {
         required : true
     },
     price : {
-        type:Number
+        type:Number,
+        required : true
+    },
+    color : {
+        type:String,
+        required : true
+    },
+    size : [{
+        type:String,
+        required : true
+    }],
+
+    description : {
+        type: String,
+        required : true,
+        maxLength :150
+    },
+
+    condition : {
+        type: String,
+        enum : ['baru', 'bekas'];
+        default : 'baru'
+    },
+
+     stock : {
+        type: Number,
+        enum : ['baru', 'bekas'];
+        default : 'baru'
     }
+
 });
 
 // membuat model
