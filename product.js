@@ -14,7 +14,8 @@ const productSchema = mongoose.Schema ( {
     },
     price : {
         type:Number,
-        required : true
+        required : true,
+        min : 0 
     },
     color : {
         type:String,
@@ -33,16 +34,26 @@ const productSchema = mongoose.Schema ( {
 
     condition : {
         type: String,
-        enum : ['baru', 'bekas'];
+        enum : ['baru', 'bekas'],
         default : 'baru'
     },
 
      stock : {
         type: Number,
-        enum : ['baru', 'bekas'];
-        default : 'baru'
-    }
+        required : true,
+        min : 0 
+    },
 
+    availability : {
+        online : {
+            type : Boolean,
+            required : true
+        },
+        offline : {
+            type : Boolean,
+            required : true
+        },
+    }
 });
 
 // membuat model
