@@ -56,44 +56,14 @@ const productSchema = mongoose.Schema ( {
     }
 });
 
-<<<<<<< HEAD
 // membuat custom method model
 productSchema.methods.outStock = function () {
     this.stock = 0 
     return this.save();
 }
 
-// function change stock
-const changeStock = async(id) => {
-    const foundProduct = await Product.findById(id)
-    await foundProduct.outStock();
-    console.log('Data Berhasil diubah');
-}
-
 
 // membuat model
-=======
-
-// membuat custom method
-productSchema.methods.outStock = function() {
-    this.stock = 0
-    this.availability.online = false
-    this.availability.offline = false
-    return this.save()
-}
-
-// static method
-productSchema.statics.closeStore = function () {
-	return this.updateMany({}, {
-		stock:0,
-		"availability.online":false,
-		"availability.offline":false,
-	})
-};
-
-
-// --membuat model--
->>>>>>> 0c316085113a634a87e78ae06441e7ba2e475e96
 const Product = mongoose.model('Product', productSchema);
 
 

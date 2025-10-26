@@ -17,15 +17,46 @@ personSchema.virtual('fullName').get(function() {
     return `${this.firstName} ${this.lastName}`
 });
 
+// middleware sebelum menyimpan 
+personSchema.pre('save', async function() {
+    // coba overrite
+    this.firstName = "Zayyan"
+    this.lastName = "Habibi"
+
+    // proses sebelum melakukan simpan 
+    console.log('Persiapan menyimpan data')
+})
+
+// middleware setelah menyimpan
+personSchema.post('save', async function () {
+    // contoh setelah menyimpan
+    console.log('Data Berhasil disimpan..')
+})
+
+
 // model Person
 const Person = mongoose.model('Person', personSchema);
 
 // buat data person
 const person = new Person({
-    firstName:'Hamdi',
-    lastName:'Azi'
+    firstName:'Putri',
+    lastName:'Rezeki'
 });
-console.log(person.lastName);
+
+// tes panggil virtual method 
+// console.log(person.fullName);
+
+// panggil person
+console.log(person);
+
+
+// tes panggil method dari middleware
+person.save().then((result) => {
+    console.log(result);
+}).catch((err) => {
+    console.log(err);
+})
+
 
 
 // save ke DB
